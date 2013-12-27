@@ -1,0 +1,95 @@
+.navbar-default {
+    background-color: #FFFFFF;
+    padding: 5px 0px;
+}
+
+.main-color {
+    color: #E5696C;
+}
+
+.second-color {
+    color: #B1B2B4;
+}
+
+.main-font {
+    font-family: "Share Tech";
+    font-style: normal;
+    color: #B1B2B4 !important;
+}
+
+.title {
+    margin-top: 5px;
+    margin-left: 5px !important;
+    font-size: 35px;
+}
+
+.context-image {
+    /*border: #080808 solid thin;*/
+    padding-top: 75px;
+    height: 480px;
+    width: 100%;
+    color: #FFF;
+    background: url('../img/background-img.jpg') #FFFFFF no-repeat 50% 0%;
+    position: relative;
+}
+
+.app-images {
+    width: 450px;
+    height: auto;
+    margin-top: 100px;
+}
+
+.box {
+    background-color: #B1B2B4;
+    height: 230px;
+    margin-top: 280px;
+}
+
+.encourage {
+    text-align: center;
+    text-transform: capitalize;
+    width: 90%;
+    margin-left: 5%;
+    padding-top: 20px;
+    font-family: "Open Sans";
+    font-weight: 300;
+    font-style: normal;
+    font-size: 17px;
+}
+
+.form-input {
+    display: block;
+    height: 40px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #555555;
+    vertical-align: middle;
+    margin-top: 20px;
+    background-color: #ffffff;
+    background-image: none;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+.send
+{
+    font-family: "Open Sans";
+    font-weight: 300;
+    font-style: normal;
+    font-size: 17px;
+    background-color: #E5696C;
+    color: #FFFFFF;
+    margin-top: 20px;
+    height: 40px;
+}
+
+.send:hover, .send:focus
+{
+    background-color: #E5696C;
+    color: #B1B2B4;
+}
