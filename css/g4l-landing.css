@@ -93,3 +93,15 @@
     background-color: #E5696C;
     color: #B1B2B4;
 }
+
+#map-canvas
+{
+    padding-top: 15px;
+    width: 100%;
+    height: 500px;
+}
+
+.callout
+{
+    //background-color: #d43f3a;
+}
