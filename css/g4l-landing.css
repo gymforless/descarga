@@ -103,5 +103,31 @@
 
 .callout
 {
-    //background-color: #d43f3a;
+    /*border: #080808  solid 1px;*/
+    /*background-color: #d43f3a;*/
+}
+
+.photo-gym
+{
+    width: 75px;
+    height: 75px;
+    float: left;
+}
+
+.photo-gym > IMG
+{
+    width: 75px;
+    height: 75px;
+}
+
+.content-gym
+{
+    padding-left: 10px;
+    width: 200px;
+    height: 50px;
+    float: left;
+    font-family: "Open Sans" !important;
+    font-weight: 300 !important;
+    font-style: normal !important;
+    font-size: 20px !important;
 }
