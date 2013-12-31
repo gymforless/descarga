@@ -123,11 +123,55 @@
 .content-gym
 {
     padding-left: 10px;
-    width: 200px;
+    max-width: 210px;
     height: 50px;
     float: left;
+}
+
+.gym-name
+{
+    max-width: 210px;
+    height: 30px;
     font-family: "Open Sans" !important;
     font-weight: 300 !important;
     font-style: normal !important;
-    font-size: 20px !important;
+    font-size: 16px !important;
+}
+
+.categories {
+    max-width: 210px;
+    height: 20px;
+}
+
+.category {
+    margin-left: 1px;
+    float: left;
+    width: 20px;
+    height: 20px;
+}
+
+.category > IMG {
+    width: 20px;
+    height: 20px;
+}
+
+.price {
+    width: 75px;
+    height: 75px;
+    line-height: 75px;
+    float: left;
+    background-color: #E5696C;
+    margin-left: 10px;
+}
+
+.price > span {
+    width: 75px;
+    color: #FFF;
+    text-align: center;
+    vertical-align: middle;
+    font-family: "Share Tech" !important;
+    font-style: normal !important;
+    font-size: 25px !important;
+    font-size: 25px !important;
+    display: inline-block;
 }

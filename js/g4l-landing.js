@@ -34,20 +34,20 @@ var map, infowindow;
         };
         map = new google.maps.Map(document.getElementById("map-canvas"),
             mapOptions);
+
+        //Barcelona by default so far
+        var latitude=41.396385;
+        var longitude=2.174606;
+
+        var url = 'http://gymforless.herokuapp.com/api/gyms?longitude='+longitude+'&latitude='+latitude;
+        $.ajax({
+            url: url,
+            type: 'GET',
+            success: annotations
+        });
     }
     google.maps.event.addDomListener(window, 'load', initializeMap);
 
-
-    //Barcelona by default so far
-    var latitude=41.396385;
-    var longitude=2.174606;
-
-    var url = 'http://gymforless.herokuapp.com/api/gyms?longitude='+longitude+'&latitude='+latitude;
-    $.ajax({
-        url: url,
-        type: 'GET',
-        success: annotations
-    });
 
 })();
 
@@ -72,7 +72,11 @@ function annotations(data, textStatus, jqXHR)
                     if (gym.photos.length > 0) {
                         photoKey = 'https://s3-eu-west-1.amazonaws.com/g4l-images/' + gym.id + '/' + gym.photos[0].key;
                     }
-                    var content = "<div class='callout'><div class='photo-gym'><img src='"+photoKey+"'/></div><div class='content-gym'>"+gym.name+"</div></div>";
+                    var content = "<div class='callout'><div class='photo-gym'><img src='"+photoKey+"'/></div><div class='content-gym'><div class='gym-name'>"+gym.name+"</div><div class='categories'>"
+                    normalizeCategories(gym.categories).forEach(function(c){
+                        content += "<div class='category' style='background-color: " + c.color + "'><img src='img/" + c.imageName + "'/></div>";
+                    });
+                    content += "</div></div><div class='price'><span>" + gym.products[0].price.formatMoney(2, ',', '.') + "€</span></div></div>";
                     infowindow.setContent(content);
                     infowindow.open(map, marker);
                 });
@@ -81,71 +85,55 @@ function annotations(data, textStatus, jqXHR)
     }
 }
 
+function normalizeCategories(categories) {
 
-/*+ (NSMutableArray*)normalizeCategories:(NSArray*)categories
-{
-    NSMutableArray* categoriesToBeShown = [[NSMutableArray alloc] init];
+    var colors = ["#535D6F", "#6DB776", "#59BDBA", "#C3D379", "#EA3751", "#F2824D", "#C84A5A", "#EE6539"];
+    var imageNames = [ "icon_fitness-small@2x.png",
+                       "icon_spa-small@2x.png",
+                       "icon_pool-small@2x.png",
+                       "icon_activities-small@2x.png",
+                       "icon_beauty-small@2x.png",
+                       "icon_court-small@2x.png",
+                       "icon_services-small@2x.png",
+                       "icon_food-small@2x.png" ];
 
-    NSArray* colors = [[NSArray alloc] initWithObjects:
-                       [UIColor colorWithRed:83/255.0 green:93/255.0 blue:111/255.0 alpha:1],
-                       [UIColor colorWithRed:109/255.0 green:183/255.0 blue:118/255.0 alpha:1],
-                       [UIColor colorWithRed:89/255.0 green:189/255.0 blue:186/255.0 alpha:1],
-                       [UIColor colorWithRed:195/255.0 green:211/255.0 blue:121/255.0 alpha:1],
-                       [UIColor colorWithRed:234/255.0 green:55/255.0 blue:81/255.0 alpha:1],
-                       [UIColor colorWithRed:242/255.0 green:130/255.0 blue:77/255.0 alpha:1],
-                       [UIColor colorWithRed:200/255.0 green:74/255.0 blue:90/255.0 alpha:1],
-                       [UIColor colorWithRed:238/255.0 green:101/255.0 blue:57/255.0 alpha:1],
-                       nil];
+    var normalized = [];
 
-    NSArray* imageNames = [[NSArray alloc] initWithObjects:
-                           @"icon_fitness",
-                           @"icon_spa",
-                           @"icon_pool",
-                           @"icon_activities",
-                           @"icon_beauty",
-                           @"icon_court",
-                           @"icon_services",
-                           @"icon_food",
-                           nil];
-
-    NSArray* leftOffsets = [[NSArray alloc] initWithObjects:
-                            [NSNumber numberWithInteger:13],
-                            [NSNumber numberWithInteger:13],
-                            [NSNumber numberWithInteger:13],
-                            [NSNumber numberWithInteger:8],
-                            [NSNumber numberWithInteger:12],
-                            [NSNumber numberWithInteger:10],
-                            [NSNumber numberWithInteger:10],
-                            [NSNumber numberWithInteger:1],
-                            nil];
-
-    categoriesToBeShown = [[NSMutableArray alloc] init];
-    for (Category* category in categories)
+    for (var i = 0; i < categories.length; i++)
     {
-        bool categoryMustBeIncluded = false;
-        for (Facility* facilty in category.facilities)
-        {
-            if (facilty.included)
-            {
-                categoryMustBeIncluded = true;
-                break;
-            }
+        var c = categories[i];
+
+        var categoryMustBeIncluded = false;
+
+        if (c.hasOwnProperty("facilities")){
+            c.facilities.forEach(function(f) {
+                if (f.included == true) {
+                    categoryMustBeIncluded = true;
+                }
+            });
         }
 
-        int assetsPos = category.position;
-
         if (categoryMustBeIncluded) {
-            category.color = colors[assetsPos];
-            category.imagename = imageNames[assetsPos];
-            category.leftOffset = [(NSNumber*)leftOffsets[assetsPos] integerValue];
-            [categoriesToBeShown addObject:category];
+            c.color = colors[i];
+            c.imageName = imageNames[i];
+            normalized.push(c);
         }
     }
 
-    return categoriesToBeShown;
-}*/
+    return normalized;
+}
 
 
+Number.prototype.formatMoney = function(c, d, t){
+var n = this,
+    c = isNaN(c = Math.abs(c)) ? 2 : c,
+    d = d == undefined ? "." : d,
+    t = t == undefined ? "," : t,
+    s = n < 0 ? "-" : "",
+    i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "",
+    j = (j = i.length) > 3 ? j % 3 : 0;
+   return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+};
 
 function send()
 {
