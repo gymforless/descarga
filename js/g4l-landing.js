@@ -145,15 +145,16 @@ function send()
             url: 'http://gymforless-staging.herokuapp.com/api/landing',
             data: value,
             dataType: 'json',
-            type: 'POST'
-        });
-
-        request.done(function (response, textStatus, jqXHR){
-            alert("Se ha registrado correctamente");
-        });
-
-        request.fail(function (jqXHR, textStatus, errorThrown){
-            alert("Lo sentimos, no se ha podido registrar su teléfono/email en nuestros registros. Inténtelo más tarde.")
+            type: 'POST',
+            cache: false,
+            complete: function (xhr, status) {
+                if (status === 'error') {
+                    alert("Lo sentimos, no se ha podido registrar su teléfono/email en nuestros registros. Inténtelo más tarde.")
+                }
+                else {
+                    alert("Se ha registrado correctamente");
+                }
+            }
         });
 
     }
