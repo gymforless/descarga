@@ -91,7 +91,7 @@
 .send:hover, .send:focus
 {
     background-color: #E5696C;
-    color: #B1B2B4;
+    color: #EEEEEE;
 }
 
 #map-canvas

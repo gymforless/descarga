@@ -140,7 +140,22 @@ function send()
     var value = document.getElementById("telephoneOrEmail").value;
     if ( validatePhonenumber(value) || validateEmail(value) )
     {
-        //document.getElementById("main-form").submit();
+        //TODO: CAMBIAR URL DE DESTINO!
+        var request = $.ajax({
+            url: 'http://gymforless-staging.herokuapp.com/api/landing',
+            data: value,
+            dataType: 'json',
+            type: 'POST'
+        });
+
+        request.done(function (response, textStatus, jqXHR){
+            alert("Se ha registrado correctamente");
+        });
+
+        request.fail(function (jqXHR, textStatus, errorThrown){
+            alert("Lo sentimos, no se ha podido registrar su teléfono/email en nuestros registros. Inténtelo más tarde.")
+        });
+
     }
     else
     {
@@ -150,21 +165,21 @@ function send()
 
 
 function validatePhonenumber(inputtxt)
+{
+    var phoneno = /^\d{9}/;
+    var firstCharacter = inputtxt.charAt(0);
+    if( inputtxt.match(phoneno) && (firstCharacter == "6" || firstCharacter == "7"))
     {
-        var phoneno = /^\d{9}/;
-        var firstCharacter = inputtxt.charAt(0);
-        if( inputtxt.match(phoneno) && (firstCharacter == "6" || firstCharacter == "7"))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return true;
     }
+    else
+    {
+        return false;
+    }
+}
 
-    function validateEmail(email)
-    {
-        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(email);
-    }
+function validateEmail(email)
+{
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}
