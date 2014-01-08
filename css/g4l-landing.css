@@ -1,6 +1,21 @@
 .navbar-default {
-    background-color: #FFFFFF;
+    background-color: #E5696C;
     padding: 5px 0px;
+    height: 140px;
+}
+
+#header {
+    margin: 0px 50px !important;
+}
+
+.logo {
+    margin-top: 14px;
+    height: 100px;
+}
+
+.store {
+    margin-left: 5px;
+    margin-top: 40px;
 }
 
 .main-color {
@@ -24,7 +39,6 @@
 }
 
 .context-image {
-    /*border: #080808 solid thin;*/
     padding-top: 75px;
     height: 480px;
     width: 100%;
@@ -33,59 +47,115 @@
     position: relative;
 }
 
+
 .app-images {
-    width: 450px;
-    height: auto;
-    margin-top: 100px;
+    width: auto;
+    height: 700px;
+    position: absolute;
+    top: 10px;
+    z-index: 3;
+}
+
+.centered
+{
+    margin-top: -75px;
+    padding: 0px 150px;
+    height: 735px;
+    min-width: 1200px;
+    position: relative;
+
 }
 
 .box {
-    background-color: #B1B2B4;
-    height: 230px;
-    margin-top: 280px;
+    border: #9E9E9E solid thin;
+    background-color: #ECECEC;
+    height: 220px;
+    min-width: 440px;
+    width: 40%;
+    position: absolute;
+    top: 300px;
+    right: 65px;
+}
+
+.caching {
+    text-align: center;
+    width: 90%;
+    margin-left: 5%;
+    padding-top: 15px;
+    font-family: "Share Tech";
+    font-style: normal;
+    font-size: 30px;
+    color: #E5696C;
+}
+
+.slogan {
+    height: 220px;
+    min-width: 220px;
+    width: 24%;
+    position: absolute;
+    top: 150px;
+    right: 170px;
+    text-align: center;
+    padding-top: 5px;
+    font-family: "Share Tech";
+    font-style: normal;
+    font-size: 32px;
+    color: #E5696C;
 }
 
 .encourage {
     text-align: center;
-    text-transform: capitalize;
-    width: 90%;
-    margin-left: 5%;
-    padding-top: 20px;
+    width: 80%;
+    margin-left: 10%;
+    padding-top: 5px;
     font-family: "Open Sans";
     font-weight: 300;
     font-style: normal;
-    font-size: 17px;
+    font-size: 20px;
+}
+
+.input-box {
+    width: 264px;
+    padding-top: 5px;
+    margin: 0px auto;
+    z-index: 5;
 }
 
 .form-input {
+    font-family: "Share Tech";
+    font-style: normal;
+    font-size: 22px;
     display: block;
     height: 40px;
+    width: 224px;
     padding: 6px 12px;
-    font-size: 14px;
     line-height: 1.428571429;
     color: #555555;
     vertical-align: middle;
-    margin-top: 20px;
+    margin-top: 10px;
     background-color: #ffffff;
     background-image: none;
-    border: 1px solid #cccccc;
-    border-radius: 4px;
+    border: 1px solid #9E9E9E;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
     transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    float: left;
 }
 
 .send
 {
-    font-family: "Open Sans";
-    font-weight: 300;
+    font-family: "Share Tech";
     font-style: normal;
-    font-size: 17px;
+    font-size: 22px;
     background-color: #E5696C;
     color: #FFFFFF;
-    margin-top: 20px;
+    margin-top: 10px;
     height: 40px;
+    float: left;
+    width: 40px;
+    padding: 0px;
+    border-radius: 0px !important;
 }
 
 .send:hover, .send:focus
@@ -96,28 +166,90 @@
 
 #map-canvas
 {
-    padding-top: 15px;
+    top: 107px;
+    left: 155px;
+    width: 280px;
+    height: 453px;
+    z-index: 4;
+}
+
+.select-city
+{
+    font-family: "Share Tech";
+    font-style: normal;
+    height: 35px;
+    font-size: 20px;
+    width: 280px !important;
+    left: 66px !important;
+    top: 107px !important;
+    border-radius: 0px !important;
+    z-index: 4 !important;
+    background-color: #E5696C !important;
+    color: #FFFFFF !important;
+    line-height: 23px;
+}
+
+.select-city > .caret {
+    border-top-color: #FFFFFF;
+}
+
+.select-city:active, .select-city:focus, .select-city:hover {
+    background-color: #C55C60 !important;
+    color: #FFFFFF;
+}
+
+.select-city-dropdown
+{
+    font-family: "Share Tech";
+    background-color: #E5696C !important;
+
+    font-style: normal;
+    font-size: 20px;
+    top: 139px; !important;
+    width: 280px !important;
+    left: 66px !important;
+}
+
+.select-city-dropdown > li > a {
+    color: #FFFFFF !important;
+}
+
+.select-city-dropdown > li > a:focus, .select-city-dropdown > li > a:hover {
+    background-color: #C55C60 !important;
+}
+
+#footer {
+    background-color: #ECECEC;
     width: 100%;
-    height: 500px;
+    height: 55px;
+}
+
+#footer > p {
+    text-align: center;
+    font-family: "Open Sans";
+    font-weight: 300;
+    font-style: normal;
+    font-size: 15px;
+    color: #555;
+    height: 55px;
+    line-height: 55px;
 }
 
 .callout
 {
-    /*border: #080808  solid 1px;*/
-    /*background-color: #d43f3a;*/
 }
 
 .photo-gym
 {
-    width: 75px;
-    height: 75px;
+    width: 60px;
+    height: 60px;
     float: left;
 }
 
 .photo-gym > IMG
 {
-    width: 75px;
-    height: 75px;
+    width: 60px;
+    height: 60px;
 }
 
 .content-gym
@@ -130,48 +262,50 @@
 
 .gym-name
 {
-    max-width: 210px;
-    height: 30px;
+    max-width: 90px;
+    height: 22px;
     font-family: "Open Sans" !important;
     font-weight: 300 !important;
     font-style: normal !important;
-    font-size: 16px !important;
+    font-size: 12px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .categories {
-    max-width: 210px;
-    height: 20px;
+    max-width: 90px;
+    height: 19px;
 }
 
 .category {
     margin-left: 1px;
     float: left;
-    width: 20px;
-    height: 20px;
+    width: 19px;
+    height: 19px;
 }
 
 .category > IMG {
-    width: 20px;
-    height: 20px;
+    width: 19px;
+    height: 19px;
 }
 
 .price {
-    width: 75px;
-    height: 75px;
-    line-height: 75px;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
     float: left;
     background-color: #E5696C;
     margin-left: 10px;
 }
 
 .price > span {
-    width: 75px;
+    width: 60px;
     color: #FFF;
     text-align: center;
     vertical-align: middle;
     font-family: "Share Tech" !important;
     font-style: normal !important;
-    font-size: 25px !important;
-    font-size: 25px !important;
+    font-size: 20px !important;
     display: inline-block;
 }

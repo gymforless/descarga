@@ -1,5 +1,13 @@
 var map, infowindow;
 
+var cities = [
+    {lat:41.396385, lng:2.170000,   zoom: 12, name: "Barcelona"},
+    {lat:40.416502, lng:-3.703895,  zoom: 11, name: "Madrid"},
+    {lat:43.278456, lng:-2.950000,   zoom: 12, name: "Bilbao"},
+    {lat:39.57119, lng:2.646634,   zoom: 12, name: "Palma de Mallorca"},
+    {lat:39.480726, lng:-0.376282,   zoom: 12, name: "Valencia"}
+    ];
+
 (function(){
 	var ua = navigator.userAgent,
 		isMobileWebkit = /WebKit/.test(ua) && /Mobile/.test(ua);
@@ -22,29 +30,23 @@ var map, infowindow;
     };
 
     function initializeMap() {
-        //Spain locations
-        /*var lat = 40.178873;
-        var lng = -3.361816;*/
-        //Barcelona location
-        var lat = 41.396385;
-        var lng = 2.174606;
+        changeCity(0);
+        /*var lat = cities[0].lat;
+        var lng = cities[0].lng;
         var mapOptions = {
           center: new google.maps.LatLng(lat,lng),
-          zoom: 13
+          zoom: cities[0].zoom,
+          streetViewControl: false
         };
         map = new google.maps.Map(document.getElementById("map-canvas"),
             mapOptions);
 
-        //Barcelona by default so far
-        var latitude=41.396385;
-        var longitude=2.174606;
-
-        var url = 'http://gymforless.herokuapp.com/api/gyms?longitude='+longitude+'&latitude='+latitude;
+        var url = 'http://gymforless.herokuapp.com/api/gyms?longitude='+lng+'&latitude='+lat;
         $.ajax({
             url: url,
             type: 'GET',
             success: annotations
-        });
+        });*/
     }
     google.maps.event.addDomListener(window, 'load', initializeMap);
 
@@ -140,9 +142,9 @@ function send()
     var value = document.getElementById("telephoneOrEmail").value;
     if ( validatePhonenumber(value) || validateEmail(value) )
     {
-        //TODO: CAMBIAR URL DE DESTINO!
+        var url = 'http://gymforless.herokuapp.com/api/landing'
         var request = $.ajax({
-            url: 'http://gymforless-staging.herokuapp.com/api/landing',
+            url: url,
             data: value,
             dataType: 'json',
             type: 'POST',
@@ -183,4 +185,30 @@ function validateEmail(email)
 {
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
+}
+
+function changeCity(cityIndex) {
+    var lng = cities[cityIndex].lng;
+    var lat = cities[cityIndex].lat
+    var url = 'http://gymforless.herokuapp.com/api/gyms?longitude='+lng+'&latitude='+lat;
+    $.ajax({
+        url: url,
+        type: 'GET',
+        success: annotations
+    });
+
+    var mapOptions = {
+      center: new google.maps.LatLng(lat,lng),
+      zoom: cities[cityIndex].zoom,
+      streetViewControl: false
+    };
+
+    if (map == null)
+        map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+    else
+    {
+        map.setOptions(mapOptions);
+        $("#city-name").html(cities[cityIndex].name);
+    }
+
 }
