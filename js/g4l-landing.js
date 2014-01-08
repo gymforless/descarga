@@ -154,7 +154,7 @@ function send()
                     alert("Lo sentimos, no se ha podido registrar su teléfono/email en nuestros registros. Inténtelo más tarde.")
                 }
                 else {
-                    alert("Se ha registrado correctamente");
+                    alert("Le hemos enviado un enlace de descarga directa ¡Corre a descargar la app!");
                 }
             }
         });
