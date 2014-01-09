@@ -53,6 +53,7 @@
     height: 700px;
     position: absolute;
     top: 10px;
+    left: 152px;
     z-index: 3;
 }
 
@@ -166,11 +167,18 @@
 
 #map-canvas
 {
-    top: 107px;
-    left: 155px;
+    top: 142px;
+    left: 307px;
     width: 280px;
     height: 453px;
     z-index: 4;
+    position: absolute !important;
+}
+
+.city-selector-group {
+    position: absolute;
+    left: 307px !important;
+    top: 107px !important;
 }
 
 .select-city
@@ -180,8 +188,6 @@
     height: 35px;
     font-size: 20px;
     width: 280px !important;
-    left: 66px !important;
-    top: 107px !important;
     border-radius: 0px !important;
     z-index: 4 !important;
     background-color: #E5696C !important;
@@ -202,12 +208,9 @@
 {
     font-family: "Share Tech";
     background-color: #E5696C !important;
-
     font-style: normal;
     font-size: 20px;
-    top: 139px; !important;
     width: 280px !important;
-    left: 66px !important;
 }
 
 .select-city-dropdown > li > a {
