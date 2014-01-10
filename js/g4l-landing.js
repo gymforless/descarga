@@ -31,22 +31,6 @@ var cities = [
 
     function initializeMap() {
         changeCity(0);
-        /*var lat = cities[0].lat;
-        var lng = cities[0].lng;
-        var mapOptions = {
-          center: new google.maps.LatLng(lat,lng),
-          zoom: cities[0].zoom,
-          streetViewControl: false
-        };
-        map = new google.maps.Map(document.getElementById("map-canvas"),
-            mapOptions);
-
-        var url = 'http://gymforless.herokuapp.com/api/gyms?longitude='+lng+'&latitude='+lat;
-        $.ajax({
-            url: url,
-            type: 'GET',
-            success: annotations
-        });*/
     }
     google.maps.event.addDomListener(window, 'load', initializeMap);
 
@@ -76,9 +60,11 @@ function annotations(data, textStatus, jqXHR)
                     }
                     var content = "<div class='callout'><div class='photo-gym'><img src='"+photoKey+"'/></div><div class='content-gym'><div class='gym-name'>"+gym.name+"</div><div class='categories'>"
                     normalizeCategories(gym.categories).forEach(function(c){
-                        content += "<div class='category' style='background-color: " + c.color + "'><img src='img/" + c.imageName + "'/></div>";
+                        content += "<div class='category' style='background: " + c.color + " ";
+                        content += "url(\"img/" + c.imageName + "\") no-repeat; ";
+                        content += "background-size: 100%'/></div>";
                     });
-                    content += "</div></div><div class='price'><span>" + gym.products[0].price.formatMoney(2, ',', '.') + "€</span></div></div>";
+                    content += "</div></div><div class='price' onclick='showMessage()'><span>" + gym.products[0].price.formatMoney(2, ',', '.') + "€</span></div></div>";
                     infowindow.setContent(content);
                     infowindow.open(map, marker);
                 });
@@ -188,6 +174,10 @@ function validateEmail(email)
 }
 
 function changeCity(cityIndex) {
+
+    if (infowindow!=null)
+        infowindow.close();
+
     var lng = cities[cityIndex].lng;
     var lat = cities[cityIndex].lat
     var url = 'http://gymforless.herokuapp.com/api/gyms?longitude='+lng+'&latitude='+lat;
@@ -211,4 +201,8 @@ function changeCity(cityIndex) {
         $("#city-name").html(cities[cityIndex].name);
     }
 
+}
+
+function showMessage() {
+    alert("Déjanos tu email/teléfono para enviarte un link de descarga y así podrás comprar este cupón");
 }
