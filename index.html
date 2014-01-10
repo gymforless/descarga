@@ -37,45 +37,82 @@
 </head>
 
 <body>
+
 	<!--navbar-fixed-top-->
 	<div class="navbar navbar-default " role="navigation">
 		<div id="header">
 			<img class="logo pull-left" src="img/logo.png" alt="logo"/>
-			<p class="slogan-header pull-left">LOS MEJORES GIMNASIOS, AL MEJOR PRECIO</p>
-			<img class="store pull-right" src="img/googleplay-2.png" alt="Google Play"/>
-			<a href="https://itunes.apple.com/es/app/gymforless/id774774395" target="_blank">
+			<p class="slogan-header pull-left visible-md visible-lg">LOS MEJORES GIMNASIOS, AL MEJOR PRECIO</p>
+			<img id="googleplay" class="store pull-right" src="img/googleplay-2.png" alt="Google Play"/>
+			<a id="appstore" href="https://itunes.apple.com/es/app/gymforless/id774774395" target="_blank">
 				<img class="store pull-right" src="img/appstore.png" alt="App Store"/>
 			</a>
 		</div>
 	</div>
 
+	<script type="text/javascript">
+		var ua = navigator.userAgent;
+
+		//TODO: cambiar a iphone y ipod para chrome!
+		if( ((ua.match(/iPhone/i)) || (ua.match(/iPod/i)))&&(ua.match(/CriOS/)) ) {
+			var e = document.getElementById('googleplay');
+			e.className = e.className + ' hide';
+		}
+		else if ((ua.match(/iPhone/i)) || (ua.match(/iPod/i))) {
+			window.location = "itms://itunes.apple.com/es/app/gymforless/id774774395?mt=8&uo=6";
+			//window.location = "http://itunes.apple.com/es/app/gymforless/id774774395";
+		}
+		else if (ua.toLowerCase().indexOf("android") > -1) {
+			var e = document.getElementById('appstore');
+			e.className = e.className + ' hide';
+			//After google play launch changes to redirect!
+		}
+	</script>
+
 
 	<div id="container">
 		<div class="centered">
-				<div class="btn-group city-selector-group">
-					<button type="button" id="citySelector" class="btn btn-default dropdown-toggle select-city" data-toggle="dropdown">
-						<span id="city-name">ELIGE TU CIUDAD</span> <span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu select-city-dropdown " role="menu">
-						<li><a href="#" onclick="changeCity(0)">Barcelona</a></li>
-						<li><a href="#" onclick="changeCity(1)">Madrid</a></li>
-						<li><a href="#" onclick="changeCity(2)">Bilbao</a></li>
-						<li><a href="#" onclick="changeCity(3)">Palma de Mallorca</a></li>
-						<li><a href="#" onclick="changeCity(4)">Valencia</a></li>
-					</ul>
-				</div>
-				<div id="map-canvas" class=""></div>
-				<img class="app-images " src="img/app-images-2.png" />
+			<div class="slogan-mobile-container visible-xs">
+				<p class="slogan-mobile ">LOS MEJORES GIMNASIOS, AL MEJOR PRECIO</p>
+			</div>
 
-				<div class="box">
-					<p class="caching">SIN CUOTAS MENSUALES, PAGA SOLO POR CADA VISITA</p>
-					<p class="caching">¡PRUEBA NUESTRA APP GRATIS!</p>
-					<p class="encourage">Déjanos tu móvil o email y te enviaremos un link de descarga rápida</p>
-					<div class="input-box">
-						<input type="text" id="telephoneOrEmail" class="form-input" placeholder="MÓVIL O EMAIL">
-						<button id="sendBtn" type="button" onclick="send()" class="btn send">OK</button>
-					</div>
+			<div class="btn-group city-selector-group visible-md visible-lg">
+				<button type="button" id="citySelector" class="btn btn-default dropdown-toggle select-city" data-toggle="dropdown">
+					<span id="city-name">ELIGE TU CIUDAD</span> <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu select-city-dropdown " role="menu">
+					<li><a href="#" onclick="changeCity(0)">Barcelona</a></li>
+					<li><a href="#" onclick="changeCity(1)">Madrid</a></li>
+					<li><a href="#" onclick="changeCity(2)">Bilbao</a></li>
+					<li><a href="#" onclick="changeCity(3)">Palma de Mallorca</a></li>
+					<li><a href="#" onclick="changeCity(4)">Valencia</a></li>
+				</ul>
+			</div>
+			<div id="map-canvas" class="visible-md visible-lg"></div>
+			<img class="app-images visible-md visible-lg" src="img/app-images-2.png" />
+
+			<div class="box visible-md visible-lg">
+				<p class="caching">SIN CUOTAS MENSUALES, PAGA SOLO POR CADA VISITA</p>
+				<p class="caching">¡PRUEBA NUESTRA APP GRATIS!</p>
+				<p class="encourage">Déjanos tu móvil o email y te enviaremos un link de descarga rápida</p>
+				<div class="input-box">
+					<input type="text" id="telephoneOrEmail" class="form-input" placeholder="MÓVIL O EMAIL">
+					<button id="sendBtn" type="button" onclick="send()" class="btn send">OK</button>
 				</div>
+			</div>
+		</div>
+
+		<div class="logo-embedded visible-xs">
+			<img src="img/logo-circle.png"/>
+		</div>
+
+		<div class="mobile-content visible-xs">
+			<div class="row">
+				<div class="col-xs-12">
+					<p>SIN CUOTAS MENSUALES, PAGA SOLO POR CADA VISITA</p>
+					<img src="img/app-images-2.png"/>
+				</div>
+			</div>
 		</div>
 
 	</div>

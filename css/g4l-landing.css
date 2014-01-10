@@ -6,7 +6,8 @@
 }
 
 #header {
-    margin: 0px 50px !important;
+    margin: 0px 0px !important;
+    padding: 0 20px !important;
 }
 
 .logo {
@@ -62,7 +63,6 @@
     background: url('../img/background-img.jpg') #FFFFFF no-repeat 50% 0%;
     padding: 0px 100px;
     height: 635px;
-    min-width: 1200px;
     position: relative;
 
 }
@@ -87,6 +87,69 @@
     font-style: normal;
     font-size: 30px;
     color: #E5696C;
+}
+
+.slogan-mobile
+{
+    font-family: "Share Tech";
+    font-style: normal;
+    font-size: 8vw;
+    color: #FFF;
+    width: 300px;
+    background-color: #E5696C;
+}
+
+.slogan-mobile-container {
+    padding-top: 10px;
+}
+
+.mobile-content {
+    min-height: 250px;
+    padding-bottom: 10px;
+    background-color: #FFFFFF;
+}
+
+.mobile-content p {
+    padding: 15px 0;
+    text-align: center;
+    font-family: "Share Tech";
+    color: #E5696C;
+    font-style: normal;
+    font-size: 8vw;
+    margin: 0 5%;
+    width: 90%;
+}
+
+.mobile-content IMG {
+    margin: 0 5%;
+    width: 90%;
+}
+
+@media (max-width: 767px) {
+    .centered {
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: 200% auto;
+        padding: 0px !important;
+        height: 250px;
+        z-index: -1;
+    }
+    .logo {
+        margin-top: 12px;
+        height: 60px;
+    }
+}
+
+.logo-embedded {
+    margin-top: -20px;
+    padding-left: 20px;
+    z-index: 9999;
+}
+
+.logo-embedded > IMG {
+    width: 40px;
+    height: 40px;
+
 }
 
 .slogan-header
@@ -243,7 +306,7 @@
     font-family: "Open Sans";
     font-weight: 300;
     font-style: normal;
-    font-size: 15px;
+    font-size: 13px;
     color: #555;
     height: 55px;
     line-height: 55px;

@@ -9,21 +9,6 @@ var cities = [
     ];
 
 (function(){
-	var ua = navigator.userAgent,
-		isMobileWebkit = /WebKit/.test(ua) && /Mobile/.test(ua);
-
-	if (isMobileWebkit) {
-		$('html').addClass('mobile');
-	}
-
-	$(function(){
-		if (isMobileWebkit) {
-
-		} else {
-
-		}
-
-	});
 
     document.getElementById("sendBtn").onclick = function(){
         send();
