@@ -70,8 +70,7 @@
 .box {
     border: #9E9E9E solid thin;
     background-color: #ECECEC;
-    height: 300px;
-    min-width: 440px;
+    min-width: 445px;
     width: 40%;
     position: absolute;
     top: 180px;
@@ -125,6 +124,7 @@
     width: 90%;
 }
 
+/*Phones*/
 @media (max-width: 767px) {
     .centered {
         background-attachment: fixed;
@@ -137,6 +137,19 @@
     .logo {
         margin-top: 12px;
         height: 60px;
+    }
+}
+
+/*Tablets*/
+@media (min-width: 768px) and (max-width: 991px) {
+    .centered {
+        padding-top: 50px;
+    }
+    .box {
+        position: relative;
+        width: 100%;
+        top: 0;
+        right: 0;
     }
 }
 
@@ -190,10 +203,15 @@
 }
 
 .input-box {
-    width: 264px;
+    width: 345px;
     padding-top: 5px;
     margin: 0px auto;
     z-index: 5;
+    padding-bottom: 5px;
+}
+
+.input-box > span {
+    font-size: 10px;
 }
 
 .form-input {
@@ -202,7 +220,7 @@
     font-size: 22px;
     display: block;
     height: 40px;
-    width: 224px;
+    width: 305px;
     padding: 6px 12px;
     line-height: 1.428571429;
     color: #555555;

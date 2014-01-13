@@ -10,6 +10,14 @@ var cities = [
 
 (function(){
 
+    var ua = navigator.userAgent;
+    if( ((ua.match(/iPhone/i)) || (ua.match(/iPod/i)))&&(ua.match(/CriOS/)) ) {
+        $.smartbanner({
+            title: 'GymForLess',
+            author: 'Gym Services Online, S.L.'
+        });
+    }
+
     document.getElementById("sendBtn").onclick = function(){
         send();
     };

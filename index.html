@@ -33,6 +33,8 @@
 	<!-- Custom styles for this template -->
 	<link href="css/g4l-landing.css" rel="stylesheet">
 
+	<link rel="stylesheet" href="css/jquery.smartbanner.css" type="text/css" media="screen">
+
 	<meta name="apple-itunes-app" content="app-id=774774395">
 </head>
 
@@ -42,7 +44,7 @@
 	<div class="navbar navbar-default " role="navigation">
 		<div id="header">
 			<img class="logo pull-left" src="img/logo.png" alt="logo"/>
-			<p class="slogan-header pull-left visible-md visible-lg">LOS MEJORES GIMNASIOS, AL MEJOR PRECIO</p>
+			<p class="slogan-header pull-left hidden-xs">LOS MEJORES GIMNASIOS, AL MEJOR PRECIO</p>
 			<img id="googleplay" class="store pull-right" src="img/googleplay-2.png" alt="Google Play"/>
 			<a id="appstore" href="https://itunes.apple.com/es/app/gymforless/id774774395" target="_blank">
 				<img class="store pull-right" src="img/appstore.png" alt="App Store"/>
@@ -57,6 +59,10 @@
 		if( ((ua.match(/iPhone/i)) || (ua.match(/iPod/i)))&&(ua.match(/CriOS/)) ) {
 			var e = document.getElementById('googleplay');
 			e.className = e.className + ' hide';
+			$.smartbanner({
+			    title: 'Audience Opinion',
+			    author: 'Dunn Solutions Group'
+			});
 		}
 		else if ((ua.match(/iPhone/i)) || (ua.match(/iPod/i))) {
 			window.location = "itms://itunes.apple.com/es/app/gymforless/id774774395?mt=8&uo=6";
@@ -91,13 +97,14 @@
 			<div id="map-canvas" class="visible-md visible-lg"></div>
 			<img class="app-images visible-md visible-lg" src="img/app-images-2.png" />
 
-			<div class="box visible-md visible-lg">
+			<div class="box hidden-xs">
 				<p class="caching">SIN CUOTAS MENSUALES, PAGA SOLO POR CADA VISITA</p>
 				<p class="caching">¡PRUEBA NUESTRA APP GRATIS!</p>
 				<p class="encourage">Déjanos tu móvil o email y te enviaremos un link de descarga rápida</p>
 				<div class="input-box">
 					<input type="text" id="telephoneOrEmail" class="form-input" placeholder="MÓVIL O EMAIL">
 					<button id="sendBtn" type="button" onclick="send()" class="btn send">OK</button>
+					<span>Al hacer click en "OK", acepta las <a href="https://s3-eu-west-1.amazonaws.com/g4l-general-files/CondicionesUso.pdf" target="_blank">Condiciones de uso</a> y <a href="https://s3-eu-west-1.amazonaws.com/g4l-general-files/PoliticaPrivacidad.pdf" target="_blank">Política de privacidad</a></span>
 				</div>
 			</div>
 		</div>
@@ -122,6 +129,7 @@
 	</div>
 
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script src="js/jquery.smartbanner.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBd-GnPH8jMCR6YVKf2ib06i_GKYJ953Yk&sensor=true"></script>
 	<script src="js/g4l-landing.js"></script>
