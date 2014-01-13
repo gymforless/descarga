@@ -138,7 +138,9 @@ function send()
                     alert("Lo sentimos, no se ha podido registrar su teléfono/email en nuestros registros. Inténtelo más tarde.")
                 }
                 else {
-                    alert("Le hemos enviado un enlace de descarga directa ¡Corre a descargar la app!");
+                    document.getElementById("telephoneOrEmail").value = '';
+                    alert("Le hemos enviado un enlace de descarga directa a " + value + " ¡Corre a descargar la app!");
+
                 }
             }
         });
