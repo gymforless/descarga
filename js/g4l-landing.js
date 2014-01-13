@@ -14,7 +14,10 @@ var cities = [
     if( ((ua.match(/iPhone/i)) || (ua.match(/iPod/i)))&&(ua.match(/CriOS/)) ) {
         $.smartbanner({
             title: 'GymForLess',
-            author: 'Gym Services Online, S.L.'
+            author: 'Gym Services Online, S.L.',
+            appStoreLanguage: 'es',
+            button: 'VER',
+            daysHidden: 0
         });
     }
 
