@@ -17,7 +17,9 @@ var cities = [
             author: 'Gym Services Online, S.L.',
             appStoreLanguage: 'es',
             button: 'VER',
-            daysHidden: 0
+            daysHidden: 0,
+            daysReminder: 0,
+            icon: "img/icon-80x80.png"
         });
     }
 
