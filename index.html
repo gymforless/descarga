@@ -62,12 +62,9 @@
 		}
 		else if ((ua.match(/iPhone/i)) || (ua.match(/iPod/i))) {
 			window.location = "https://itunes.apple.com/es/app/id774774395";
-			//window.location = "itms://itunes.apple.com/es/app/gymforless/id774774395?mt=8&uo=6";
 		}
 		else if (ua.toLowerCase().indexOf("android") > -1) {
-			var e = document.getElementById('appstore');
-			e.className = e.className + ' hide';
-			//After google play launch changes to redirect!
+			window.location = "https://play.google.com/store/apps/details?id=com.gymforless";
 		}
 	</script>
 
